@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VANA Pilates | Professional Library</title>
+
+<style>
+
+:root{
+
+--green:#52765B;--deep:#294B3A;--olive:#82966A;
+
+--cream:#F8F6EF;--beige:#EDE7D9;--brown:#806B55;
+
+--white:#fff;--ink:#343A32;--muted:#898C80;
+
+}
+
+*{box-sizing:border-box}
+
+body{margin:0;background:var(--cream);color:var(--ink);
+
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+
+header{background:var(--deep);color:white;padding:25px 5%;
+
+display:flex;justify-content:space-between;align-items:center;gap:15px}
+
+.logo{font-family:Georgia,serif;font-size:29px;letter-spacing:5px}
+
+.tag{font-size:10px;letter-spacing:2px;color:#D8DCCB;margin-top:5px}
+
+button{border:0;border-radius:9px;padding:11px 15px;cursor:pointer;
+
+font-size:13px;font-weight:600}
+
+.primary{background:var(--green);color:white}
+
+.light{background:white;color:var(--deep)}
+
+nav{display:flex;gap:8px;overflow-x:auto;padding:13px 5%;
+
+background:white;border-bottom:1px solid var(--beige)}
+
+nav button{white-space:nowrap;background:transparent;color:#65695E}
+
+nav button.active{background:#E9EFE5;color:var(--deep)}
+
+main{max-width:1100px;margin:auto;padding:28px 5% 70px}
+
+h1{font-family:Georgia,serif;font-size:32px;font-weight:500;margin:8px 0}
+
+h2{font-family:Georgia,serif;font-size:24px;font-weight:500}
+
+h3{font-size:16px}
+
+p{line-height:1.65}
+
+.muted{color:var(--muted);font-size:13px}
+
+.hero{background:linear-gradient(120deg,#E9ECDD,#F4EBDD);
+
+border-radius:20px;padding:30px;margin-bottom:22px}
+
+.hero small{letter-spacing:2px;color:var(--green)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+
+.stat,.panel,.item{background:white;border:1px solid #EEE9DD;
+
+border-radius:15px;padding:18px}
+
+.stat strong{font-size:25px;color:var(--deep);display:block}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+
+.item{cursor:pointer;transition:.2s}
+
+.item:hover{border-color:var(--olive)}
+
+.item .symbol{font-size:27px}
+
+.item h3{margin:10px 0 5px}
+
+.section{margin-top:30px}
+
+input,textarea,select{width:100%;padding:12px;border:1px solid #DDD8CA;
+
+border-radius:9px;background:white;font:inherit;margin:6px 0 12px}
+
+label{font-size:13px;font-weight:600}
+
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.photo{background:#F4F1E9;border:1px dashed #B8BBA9;
+
+border-radius:12px;padding:18px;text-align:center;margin:12px 0}
+
+.photo img{max-width:100%;max-height:210px;object-fit:contain}
+
+.pill{display:inline-block;padding:5px 9px;background:#EDF1E8;
+
+color:var(--deep);border-radius:20px;font-size:11px;margin:3px}
+
+footer{text-align:center;color:var(--muted);padding:30px;font-size:12px}
+
+.hidden{display:none!important}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+#search{max-width:400px}
+
+.presentation header{justify-content:center;text-align:center}
+
+.presentation nav,.presentation .internal{display:none!important}
+
+.presentation main{max-width:850px}
+
+@media(max-width:600px){
+
+.stats{grid-template-columns:1fr 1fr}
+
+.grid,.formgrid{grid-template-columns:1fr}
+
+.hero{padding:22px}
+
+header{padding:20px}
+
+h1{font-size:27px}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div>
+
+<div class="logo">VANA</div>
+
+<div class="tag">PILATES · WELLNESS · NATURAL BEAUTY</div>
+
+</div>
+
+<button class="light" onclick="togglePresentation()">Trình chiếu khách ↗</button>
+
+</header>
+
+<nav id="nav">
+
+<button class="active" onclick="show('home',this)">Tổng quan</button>
+
+<button onclick="show('coach',this)">Hồ sơ HLV</button>
+
+<button onclick="show('library',this)">Thư viện khách hàng</button>
+
+<button onclick="show('online',this)">Pilates Online</button>
+
+</nav>
+
+<main>
+
+<section id="home">
+
+<div class="hero">
+
+<small>WELCOME TO VANA PILATES</small>
+
+<h1>Chuyển động tự nhiên.<br>Sống khỏe bền vững.</h1>
+
+<p>Thư viện chuyên môn, hành trình khách hàng và trải nghiệm Pilates cá nhân hóa.</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat"><strong id="total">0</strong><span class="muted">Hồ sơ khách hàng</span></div>
+
+<div class="stat"><strong>01</strong><span class="muted">Hồ sơ huấn luyện viên</span></div>
+
+<div class="stat"><strong>01</strong><span class="muted">Thư viện Online</span></div>
+
+</div>
+
+<h2>Thư viện chuyên môn</h2>
+
+<div class="grid">
+
+<div class="item" onclick="show('coach')"><div class="symbol">🌿</div><h3>Hồ sơ huấn luyện viên</h3><p class="muted">Bằng cấp · Kinh nghiệm · Chuyên môn</p></div>
+
+<div class="item" onclick="show('library')"><div class="symbol">📂</div><h3>Hồ sơ khách hàng</h3><p class="muted">Đánh giá · Hình ảnh · Tiến trình</p></div>
+
+<div class="item" onclick="show('online')"><div class="symbol">💻</div><h3>Pilates Online</h3><p class="muted">Lớp học · Học viên · Chương trình</p></div>
+
+<div class="item" onclick="show('library')"><div class="symbol">✨</div><h3>Hành trình thay đổi</h3><p class="muted">Lưu trữ hình ảnh và kết quả thực tế</p></div>
+
+</div>
+
+</section>
+
+<section id="coach" class="hidden">
+
+<h1>Hồ sơ huấn luyện viên</h1>
+
+<p class="muted">VANA Pilates · Professional Profile</p>
+
+<div class="panel">
+
+<h2>VANA – Pilates Coach</h2>
+
+<p>Huấn luyện viên Pilates từ tháng 07/2022.</p>
+
+<h3>Bằng cấp và chứng nhận</h3>
+
+<ul>
+
+<li>Tốt nghiệp khóa huấn luyện Cục Thể dục Thể thao Việt Nam.</li>
+
+<li>Tốt nghiệp khóa Pilates toàn diện của Master Trainer Nguyễn Hiền Tâm.</li>
+
+<li>Hoàn thành khóa chứng nhận huấn luyện sơ cấp cứu tại SAFI Việt Nam.</li>
+
+<li>Workshop Building a Pilates Program for You.</li>
+
+</ul>
+
+<h3>Định hướng chuyên môn</h3>
+
+<p>Chuyển động có kiểm soát · Nhận thức cơ thể · Tư thế · Sức mạnh · Sức khỏe bền vững.</p>
+
+<button class="primary internal" onclick="alert('Phiên bản tiếp theo sẽ cho phép chỉnh sửa hồ sơ và tải ảnh chứng chỉ.')">Chỉnh sửa hồ sơ</button>
+
+</div>
+
+</section>
+
+<section id="library" class="hidden">
+
+<h1>Thư viện khách hàng</h1>
+
+<p class="muted">Phân loại hồ sơ theo mục tiêu và đặc điểm hình thể.</p>
+
+<input id="search" placeholder="Tìm hồ sơ khách hàng..." oninput="renderClients()">
+
+<div class="grid" id="categories">
+
+<div class="item" onclick="filterCategory('Gù lưng')">🧍<h3>Gù lưng</h3><p class="muted">Tư thế lưng trên</p></div>
+
+<div class="item" onclick="filterCategory('Cổ rùa')">🌱<h3>Cổ rùa</h3><p class="muted">Tư thế đầu và cổ</p></div>
+
+<div class="item" onclick="filterCategory('Võng lưng')">🧘<h3>Võng lưng</h3><p class="muted">Kiểm soát khung chậu</p></div>
+
+<div class="item" onclick="filterCategory('Cong vẹo')">〰️<h3>Cong vẹo cột sống</h3><p class="muted">Theo dõi và phối hợp chuyên môn</p></div>
+
+<div class="item" onclick="filterCategory('Giảm cân')">🌸<h3>Giảm cân</h3><p class="muted">Thể lực và thành phần cơ thể</p></div>
+
+<div class="item" onclick="filterCategory('Khác')">＋<h3>Trường hợp khác</h3><p class="muted">Các mục tiêu riêng</p></div>
+
+</div>
+
+<div class="actions internal">
+
+<button class="primary" onclick="addClient()">+ Thêm hồ sơ khách hàng</button>
+
+<button class="light" onclick="filterCategory('Tất cả')">Xem tất cả</button>
+
+</div>
+
+<div class="section">
+
+<h2 id="listTitle">Danh sách hồ sơ</h2>
+
+<div id="clients" class="grid"></div>
+
+</div>
+
+</section>
+
+<section id="online" class="hidden">
+
+<div class="hero">
+
+<small>VANA PILATES ONLINE</small>
+
+<h1>Chuyển động cùng bạn, ở bất cứ đâu.</h1>
+
+<p>Không gian quản lý lớp học trực tuyến và học viên từ xa.</p>
+
+</div>
+
+<div class="grid">
+
+<div class="item"><div class="symbol">📹</div><h3>Lớp học trực tuyến</h3><p class="muted">Lịch học và đường dẫn lớp học</p></div>
+
+<div class="item"><div class="symbol">👥</div><h3>Học viên Online</h3><p class="muted">Thông tin và mục tiêu tập luyện</p></div>
+
+<div class="item"><div class="symbol">📋</div><h3>Chương trình tập</h3><p class="muted">Giáo án theo từng đối tượng</p></div>
+
+<div class="item"><div class="symbol">🌿</div><h3>Đăng ký tư vấn</h3><p class="muted">Tiếp nhận khách hàng mới</p></div>
+
+</div>
+
+<div class="panel section">
+
+<h3>Thông tin lớp học Online</h3>
+
+<label>Tên lớp học</label><input placeholder="Ví dụ: Pilates Online cơ bản">
+
+<label>Thời gian</label><input placeholder="Ví dụ: Thứ 2, 4, 6 – 19:00">
+
+<label>Đường dẫn lớp học</label><input placeholder="Dán link Zoom hoặc Google Meet">
+
+<button class="primary" onclick="alert('Thông tin mẫu đã nhập. Chức năng lưu trực tuyến sẽ được kết nối ở phiên bản tiếp theo.')">Lưu thông tin</button>
+
+</div>
+
+</section>
+
+<section id="detail" class="hidden">
+
+<button class="light" onclick="show('library')">← Quay lại</button>
+
+<div id="detailContent"></div>
+
+</section>
+
+</main>
+
+<footer>VANA PILATES · GROW NATURALLY, LIVE BEAUTIFULLY<br>Professional Library · Version 1.0</footer>
+
+<script>
+
+let clients=JSON.parse(localStorage.getItem('vanaClients')||'[]');
+
+let currentFilter='Tất cả';
+
+function save(){localStorage.setItem('vanaClients',JSON.stringify(clients));}
+
+function show(id,btn){
+
+document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+
+document.getElementById(id).classList.remove('hidden');
+
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+
+if(btn)btn.classList.add('active');
+
+renderClients();
+
+}
+
+function filterCategory(c){currentFilter=c;show('library');document.getElementById('listTitle').textContent='Danh sách: '+c;renderClients();}
+
+function renderClients(){
+
+let el=document.getElementById('clients');if(!el)return;
+
+let q=(document.getElementById('search')?.value||'').toLowerCase();
+
+let arr=clients.filter(c=>(currentFilter==='Tất cả'||c.category===currentFilter)&&(c.name+' '+c.category).toLowerCase().includes(q));
+
+el.innerHTML=arr.map(c=>`<div class="item" onclick="detail(${c.id})"><span class="pill">${c.category}</span><h3>${esc(c.name)}</h3><p class="muted">${esc(c.goal||'Chưa cập nhật mục tiêu')}</p><span class="muted">Mở hồ sơ →</span></div>`).join('')||'<p class="muted">Chưa có hồ sơ. Hãy thêm khách hàng đầu tiên.</p>';
+
+document.getElementById('total').textContent=clients.length;
+
+}
+
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function addClient(){
+
+let name=prompt('Tên khách hàng:');if(!name)return;
+
+let category=prompt('Nhóm: Gù lưng / Cổ rùa / Võng lưng / Cong vẹo / Giảm cân / Khác','Khác')||'Khác';
+
+let goal=prompt('Mục tiêu tập luyện:')||'';
+
+clients.push({id:Date.now(),name,category,goal,notes:'',before:'',after:''});
+
+save();renderClients();
+
+}
+
+function detail(id){
+
+let c=clients.find(x=>x.id===id);if(!c)return;
+
+show('detail');
+
+document.getElementById('detailContent').innerHTML=`
+
+<h1>${esc(c.name)}</h1><span class="pill">${esc(c.category)}</span>
+
+<div class="panel section"><h3>Mục tiêu tập luyện</h3><p>${esc(c.goal)}</p>
+
+<label>Ghi chú đánh giá</label><textarea id="notes">${esc(c.notes)}</textarea>
+
+<h3>Ảnh trước khi tập</h3><input type="file" accept="image/*" onchange="photo(event,'before')">
+
+<div class="photo" id="beforeView">${c.before?'<img src="'+c.before+'">':'Chưa có ảnh'}</div>
+
+<h3>Ảnh sau quá trình tập</h3><input type="file" accept="image/*" onchange="photo(event,'after')">
+
+<div class="photo" id="afterView">${c.after?'<img src="'+c.after+'">':'Chưa có ảnh'}</div>
+
+<button class="primary" onclick="saveDetail(${id})">Lưu hồ sơ</button>
+
+<button class="light" onclick="presentClient(${id})">Trình chiếu khách hàng</button></div>`;
+
+}
+
+let pendingPhotos={};
+
+function photo(e,type){
+
+let file=e.target.files[0];if(!file)return;
+
+if(file.size>1200000){alert('Ảnh quá lớn. Hãy chọn ảnh dưới 1,2MB cho bản thử nghiệm.');e.target.value='';return;}
+
+let reader=new FileReader();reader.onload=()=>{pendingPhotos[type]=reader.result;document.getElementById(type+'View').innerHTML='<img src="'+reader.result+'">';};reader.readAsDataURL(file);
+
+}
+
+function saveDetail(id){
+
+let c=clients.find(x=>x.id===id);c.notes=document.getElementById('notes').value;
+
+if(pendingPhotos.before)c.before=pendingPhotos.before;
+
+if(pendingPhotos.after)c.after=pendingPhotos.after;
+
+pendingPhotos={};save();alert('Đã lưu trên trình duyệt này.');detail(id);
+
+}
+
+function presentClient(id){
+
+let c=clients.find(x=>x.id===id);
+
+document.getElementById('detailContent').innerHTML=`
+
+<div class="hero"><small>VANA PILATES · CLIENT JOURNEY</small><h1>${esc(c.name)}</h1><p>${esc(c.category)} · ${esc(c.goal)}</p></div>
+
+<div class="grid">
+
+<div class="panel"><h3>Trước khi tập</h3>${c.before?'<img width="100%" src="'+c.before+'">':'Chưa có ảnh'}</div>
+
+<div class="panel"><h3>Sau quá trình tập</h3>${c.after?'<img width="100%" src="'+c.after+'">':'Chưa có ảnh'}</div></div>
+
+<p>${esc(c.notes)}</p><p class="muted">Hình ảnh minh họa tiến trình cá nhân, không thay thế chẩn đoán hoặc cam kết kết quả điều trị.</p>`;
+
+document.body.classList.add('presentation');
+
+}
+
+function togglePresentation(){
+
+document.body.classList.toggle('presentation');
+
+}
+
+renderClients();
+
+</script>
+
+</body>
+
+</html>
